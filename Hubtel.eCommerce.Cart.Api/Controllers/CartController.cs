@@ -17,9 +17,9 @@ namespace Hubtel.eCommerce.Cart.Api.Controllers
     public class CartController : ControllerBase
     {
         private readonly ILogger<CartController> _logger;
-        private readonly Data.ECommerceDbContext _context;
+        private readonly ECommerceDbContext _context;
 
-        public CartController(ILogger<CartController> logger, Data.ECommerceDbContext context)
+        public CartController(ILogger<CartController> logger, ECommerceDbContext context)
         {
             _logger = logger;
             _context = context;
@@ -95,7 +95,7 @@ namespace Hubtel.eCommerce.Cart.Api.Controllers
             }
 
             return BadRequest(id == null && string.IsNullOrWhiteSpace(phonenumber)
-                ? "Item & Phone number parameters is empty."
+                ? "Item & Phone number parameters are empty."
                 : id == null
                     ? "Item parameter is empty."
                     : string.IsNullOrWhiteSpace(phonenumber)
@@ -118,7 +118,7 @@ namespace Hubtel.eCommerce.Cart.Api.Controllers
             }
 
             return BadRequest(id == null && string.IsNullOrWhiteSpace(phonenumber)
-                ? "Item & Phone number parameters is empty."
+                ? "Item & Phone number parameters are empty."
                 : id == null
                     ? "Item parameter is empty."
                     : string.IsNullOrWhiteSpace(phonenumber)

@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Hubtel.eCommerce.Cart.Api.Data;
+using Hubtel.eCommerce.Cart.Api.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -31,7 +33,11 @@ namespace Hubtel.eCommerce.Cart.Api
             //services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase());
             services.AddDbContext<ECommerceDbContext>(opt => opt.UseInMemoryDatabase("ECommerceDb"));
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(s =>
+            {
+                s.RegisterValidatorsFromAssemblyContaining<CartValidator>();
+                //s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
             // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
             // Note: Add this service at the end after AddMvc() or AddMvcCore().
             services.AddSwaggerGen(c =>
