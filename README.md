@@ -1,4 +1,4 @@
-An API to be used to unify the e-commerce cart experience for users:
+# An API to be used to unify the e-commerce cart experience for users:
 
 1. An endpoint to Add items to cart, with specified quantity
   - Adding similar items (same item ID) should increase the quantity - POST
